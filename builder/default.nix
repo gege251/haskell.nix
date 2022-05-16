@@ -1,9 +1,9 @@
-{ pkgs, buildPackages, stdenv, lib, haskellLib, ghc, compiler-nix-name, fetchurl, pkgconfig, nonReinstallablePkgs, hsPkgs, compiler }:
+{ pkgs, buildPackages, stdenv, lib, haskellLib, ghc, compiler-nix-name, fetchurl, pkgconfig, nonReinstallablePkgs, hsPkgs, compiler, ca-derivations }:
 
 let
   # Builds a single component of a package.
   comp-builder = haskellLib.weakCallPackage pkgs ./comp-builder.nix {
-    inherit ghc haskellLib makeConfigFiles haddockBuilder ghcForComponent hsPkgs compiler;
+    inherit ghc haskellLib makeConfigFiles haddockBuilder ghcForComponent hsPkgs compiler ca-derivations;
   };
 
   haddockBuilder = haskellLib.weakCallPackage pkgs ./haddock-builder.nix {

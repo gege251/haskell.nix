@@ -27,5 +27,14 @@ with lib.types;
     hsPkgs = lib.mkOption {
       type = lib.types.unspecified;
     };
+    # Enable experimental ca-derivations support
+    ca-derivations = mkOption {
+      type = bool;
+      default = false;
+      description = ''
+        Build content addressed derivations, requires Nix to have experimental feature
+        `ca-derivations` enabled.
+      '';
+    };
   };
 }

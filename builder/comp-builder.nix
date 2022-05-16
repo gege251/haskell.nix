@@ -1,4 +1,4 @@
-{ pkgs, stdenv, buildPackages, ghc, lib, gobject-introspection ? null, haskellLib, makeConfigFiles, haddockBuilder, ghcForComponent, hsPkgs, compiler, runCommand, libffi, gmp, zlib, ncurses, nodejs }@defaults:
+{ pkgs, stdenv, buildPackages, ghc, lib, gobject-introspection ? null, haskellLib, makeConfigFiles, haddockBuilder, ghcForComponent, hsPkgs, compiler, runCommand, libffi, gmp, zlib, ncurses, nodejs, ca-derivations }@defaults:
 lib.makeOverridable (
 let self =
 { componentId
@@ -315,6 +315,8 @@ let
     doCrossCheck = false;
 
     inherit dontPatchELF dontStrip;
+
+    __contentAddressed = false;
 
     passthru = {
       inherit (package) identifier;

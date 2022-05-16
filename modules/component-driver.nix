@@ -5,6 +5,7 @@ let
     ghc = config.ghc.package;
     compiler-nix-name = config.compiler.nix-name;
     inherit (config) nonReinstallablePkgs hsPkgs compiler;
+    ca-derivations = config.ca-derivations;
   };
 
 in

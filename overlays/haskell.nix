@@ -504,7 +504,7 @@ final: prev: {
         # plan-nix without building the project.
         cabalProject' =
           projectModule: haskellLib.evalProjectModule ../modules/cabal-project.nix projectModule (
-            { src, compiler-nix-name, ... }@args':
+            { src, compiler-nix-name, ca-derivations, ... }@args':
             let
               args = { caller = "cabalProject'"; } // args';
               callProjectResults = callCabalProjectToNix args;
